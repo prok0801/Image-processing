@@ -137,7 +137,7 @@
 \maketitle
 
 \section{Ex1 - Image Filtering}
-\subsection{Mã nguồn}
+\subsection{Source code}
 \subsubsection{padding\_img() function}
 \begin{lstlisting}[caption={Code of padding\_img() function}, label={padding\_img}]
 def padding_img(img, filter_size=3):
@@ -148,10 +148,10 @@ def padding_img(img, filter_size=3):
 
 \begin{itemize}
     
-    \item Thuật toán:
+    \item Algorithm:
     \begin{itemize}
-        \item Sử dụng hàm np.pad từ thư viện NumPy để thêm các hàng và cột vào xung quanh ảnh ban đầu. Tham số pad\_size được tính bằng cách chia filter\_size cho 2, và sau đó np.pad được sử dụng để thêm các hàng và cột tương ứng.
-        \item Chế độ (mode) được đặt là 'edge', điều này có nghĩa là các giá trị pixel ở biên của ảnh sẽ được sao chép từ các hàng và cột cuối cùng của ảnh. Điều này giúp giữ nguyên các biên của ảnh và tránh tạo ra hiệu ứng không mong muốn khi đệm.
+        \item Use the np.pad function from the NumPy library to add rows and columns around the original image. The pad\_size parameter is calculated by dividing filter\_size by 2, and then np.pad is used to add the corresponding rows and columns.
+        \item The mode is set to 'edge', which means that the pixel values at the edges of the image will be copied from the last rows and columns of the image. This helps preserve the edges of the image and avoid creating unwanted effects when padding.
     \end{itemize}
 \end{itemize}
 
@@ -181,14 +181,14 @@ def mean_filter(img, filter_size=3):
 
 \begin{itemize}
     
-    \item Thuật toán:
+    \item Algorithm:
     \begin{itemize}
-        \item Hình ảnh đầu vào được thêm viền bằng cách sử dụng hàm padding\_img, đảm bảo các pixel ở mép của hình ảnh cũng có thể được xử lý.
-        \item Một ma trận có kích thước giống với hình ảnh đầu vào được khởi tạo để chứa hình ảnh được làm mịn.
-        \item Hàm duyệt qua từng pixel của hình ảnh, và tại mỗi vị trí, trích xuất vùng lân cận xung quanh pixel đó bằng cách sử dụng kích thước bộ lọc.
+        \item The input image is padded using the padding\_img function, ensuring pixels at the edge of the image can also be processed.
+        \item A matrix with the same size as the input image is initialized to contain the smoothed image.
+        \item The function goes through each pixel of the image, and at each location, extracts the neighborhood around that pixel using the filter size.
 
-        \item Bộ lọc trung bình được áp dụng bằng cách tính trung bình của các giá trị pixel trong vùng lân cận.
-        \item Giá trị trung bình được gán cho pixel tương ứng trong hình ảnh được làm mịn.
+        \item The median filter is applied by calculating the average of the pixel values in the neighborhood.
+        \item The mean value is assigned to the corresponding pixel in the smoothed image.
    
     \end{itemize}
 \end{itemize}
@@ -220,13 +220,13 @@ def median_filter(img, filter_size=3):
 
 \begin{itemize}
     
-    \item Thuật toán:
+    \item Algorithm:
     \begin{itemize}
-        \item Hình ảnh đầu vào được thêm viền bằng cách sử dụng hàm padding\_img, đảm bảo các pixel ở mép của hình ảnh cũng có thể được xử lý.
-        \item Một ma trận có kích thước giống với hình ảnh đầu vào được khởi tạo để chứa hình ảnh được làm mịn.
-        \item Hàm duyệt qua từng pixel của hình ảnh, và tại mỗi vị trí, trích xuất vùng lân cận xung quanh pixel đó bằng cách sử dụng kích thước bộ lọc.
-        \item Bộ lọc trung vị được áp dụng bằng cách tính giá trị trung vị của các giá trị pixel trong vùng lân cận.
-        \item Giá trị trung vị được gán cho pixel tương ứng trong hình ảnh được làm mịn.
+        \item The input image is padded using the padding\_img function, ensuring pixels at the edge of the image can also be processed.
+        \item A matrix with the same size as the input image is initialized to contain the smoothed image.
+        \item The function goes through each pixel of the image, and at each location, extracts the neighborhood around that pixel using the filter size.
+        \item The median filter is applied by calculating the median of the pixel values in the neighborhood.
+        \item The median value is assigned to the corresponding pixel in the smoothed image.
     \end{itemize}
 \end{itemize}
 
@@ -248,18 +248,18 @@ def psnr(gt_img, smooth_img):
 
 \begin{itemize}
     
-    \item Thuật toán:
+    \item Algorithm:
     \begin{itemize}
-        \item Tính giá trị MSE (Mean Square Error) giữa ảnh gốc và ảnh đã lọc, sau đó sử dụng công thức PSNR đã cho để tính toán điểm số PSNR và trả về nó.
+        \item Calculate the MSE (Mean Square Error) value between the original image and the filtered image, then use the given PSNR formula to calculate the PSNR score and return it.
     \end{itemize}
 \end{itemize}
 
 
 
 \subsection{Output}
-\subsubsection{Kết quả sau khi thực hiện bộ lọc mean filter}
+\subsubsection{Results after performing the mean filter}
 \begin{itemize}
-    \item Ảnh sau khi thực hiện bộ lọc mean filter:
+    \item Image after performing the mean filter:
 \end{itemize}
 
 \begin{figure}[H]
@@ -270,12 +270,12 @@ def psnr(gt_img, smooth_img):
 \end{figure}
 
 \begin{itemize}
-    \item Giá trị PSNR score: \lstinline{31.61}
+    \item PSNR score value: \lstinline{31.61}
 \end{itemize}
 
-\subsubsection{Kết quả sau khi thực hiện bộ lọc median filter}
+\subsubsection{Results after performing the median filter}
 \begin{itemize}
-    \item Ảnh sau khi thực hiện bộ lọc median filter:
+    \item Image after implementing the median filter:
 \end{itemize}
 
 \begin{figure}[H]
@@ -286,27 +286,27 @@ def psnr(gt_img, smooth_img):
 \end{figure}
 
 \begin{itemize}
-    \item Giá trị PSNR score: \lstinline{37.12}
+    \item PSNR score value: \lstinline{37.12}
 \end{itemize}
 
-\subsubsection{Nhận xét về PSNR score}
+\subsubsection{Comments on PSNR score}
 
 \begin{itemize}
-    \item Dựa trên các chỉ số Peak Signal-to-Noise Ratio (PSNR) đã cung cấp:
+    \item Based on the provided Peak Signal-to-Noise Ratio (PSNR) metrics:
     \begin{itemize}
-        \item Điểm số PSNR của mean filter: 31.61
-        \item Điểm số PSNR của median filter: 37.12
+        \item Mean filter PSNR score: 31.61
+        \item Median filter PSNR score: 37.12
     \end{itemize}
     
-    \item Điểm số PSNR đo lường chất lượng của ảnh sau khi lọc, trong đó giá trị PSNR cao hơn chỉ ra chất lượng ảnh tốt hơn. Trong trường hợp này, median filter có điểm số PSNR cao hơn đáng kể so với mean filter. Điều này ngụ ý rằng median filter có hiệu suất tốt hơn trong việc bảo tồn chất lượng hình ảnh và giảm nhiễu.
-    \item Do đó, xét theo các chỉ số PSNR, median filter nên được chọn hơn mean filter cho các hình ảnh đã cung cấp.
+    \item The PSNR score measures the quality of an image after filtering, where a higher PSNR value indicates better image quality. In this case, the median filter has a significantly higher PSNR score than the mean filter. This implies that the median filter has better performance in preserving image quality and reducing noise.
+    \item Therefore, considering the PSNR metrics, median filter should be chosen over mean filter for the provided images.
     
 \end{itemize}
 
 
 
 \section{Ex 2.1 và Ex 2.2 - Fourier Transform}
-\subsection{Mã nguồn}
+\subsection{Source code}
 
 \subsubsection{DFT\_slow() function}
 \begin{lstlisting}[caption={Code of DFT\_slow() function}]
@@ -319,12 +319,12 @@ def DFT_slow(data):
 \end{lstlisting}
 
 \begin{itemize}
-    \item Thuật toán:
+    \item Source code:
     \begin{itemize}
-        \item Xác định độ dài của dữ liệu đầu vào.
-        \item Tạo một mảng numpy chứa các chỉ số từ 0 đến độ dài dữ liệu - 1.
-        \item Tạo một ma trận exponents.
-        \item Tính toán DFT bằng cách nhân ma trận exponents với dữ liệu đầu vào và trả về kết quả.
+        \item Determines the length of the input data.
+        \item Create a numpy array containing indices from 0 to data length - 1.
+        \item Create a matrix of exponents.
+        \item Compute the DFT by multiplying the exponents matrix with the input data and returning the result.
         
     \end{itemize}
 \end{itemize}
@@ -342,19 +342,19 @@ def DFT_2D(gray_img):
 
 \begin{itemize}
     
-    \item Thuật toán:
+    \item Algorithm:
     \begin{itemize}
-        \item Thực hiện biến đổi Fourier theo hàng cho mỗi hàng của hình ảnh đầu vào, sử dụng np.fft.fft với trục axis=1.
-        \item Thực hiện biến đổi Fourier theo cột cho mỗi cột của kết quả từ bước trước, sử dụng np.fft.fft với trục axis=0.
+        \item Perform a row-wise Fourier transform for each row of the input image, using np.fft.fft with axis=1.
+        \item Perform a columnwise Fourier transform for each column of the result from the previous step, using np.fft.fft with axis=0.
     \end{itemize}
 \end{itemize}
 
 
 
 \subsection{Output}
-\subsubsection{Kết quả sau khi thực hiện DFT\_2D() function}
+\subsubsection{Result after executing DFT\_2D() function}
 \begin{itemize}
-    \item Ảnh sau khi thực hiện DFT\_2D() function:
+    \item Image after executing DFT\_2D() function:
 \end{itemize}
 
 \begin{figure}[H]
@@ -366,7 +366,7 @@ def DFT_2D(gray_img):
 
 
 \section{Ex 2.3 và Ex 2.4}
-\subsection{Mã nguồn}
+\subsection{Source code}
 \subsubsection{filter\_frequency() function}
 \begin{lstlisting}[caption={Code of filter\_frequency() function}, label={filter\_frequency()}]
 def filter_frequency(orig_img, mask):
@@ -390,13 +390,13 @@ def filter_frequency(orig_img, mask):
 
 \begin{itemize}
     
-    \item Thuật toán:
+    \item Algorithm:
     \begin{itemize}
-        \item Biến đổi Fourier của hình ảnh gốc (orig\_img): Hình ảnh gốc được chuyển từ miền không gian sang miền tần số bằng cách sử dụng biến đổi Fourier (fft2), tạo ra một hình ảnh tần số (f\_img).
-        \item Dịch các hệ số tần số về trung tâm: Các hệ số tần số của hình ảnh được dịch sang trung tâm bằng cách sử dụng hàm fftshift. Điều này cần thiết để chuẩn bị cho việc áp dụng mask.
-        \item Áp dụng mask trong miền tần số: Mask được áp dụng trực tiếp lên hình ảnh tần số dịch chuyển (f\_img\_shifted). Mask này được ánh xạ pixel từ pixel tương ứng trên hình ảnh tần số.
-        \item Dịch ngược các hệ số tần số: Sau khi áp dụng mask, các hệ số tần số được dịch trở lại vị trí ban đầu bằng cách sử dụng ifftshift
-        \item Biến đổi nghịch: Cuối cùng, biến đổi Fourier nghịch (ifft2) được áp dụng để chuyển hình ảnh từ miền tần số trở lại miền không gian. Giá trị tuyệt đối của kết quả được lấy để đảm bảo giá trị thực.
+        \item Fourier transform of the original image (orig\_img): The original image is converted from the spatial domain to the frequency domain using the Fourier transform (fft2), creating a frequency image (f\_img).
+        \item Shift frequency coefficients to center: The frequency coefficients of the image are shifted to center using the fftshift function. This is necessary to prepare for the application of the mask.
+        \item Apply mask in frequency domain: Mask is applied directly to the frequency shifted image (f\_img\_shifted). This mask is pixel-mapped from the corresponding pixel on the frequency image.
+        \item Backshift the frequency coefficients: After applying the mask, the frequency coefficients are shifted back to their original positions using ifftshift.
+        \item Inverse transform: Finally, inverse Fourier transform (ifft2) is applied to convert the image from the frequency domain back to the spatial domain. The absolute value of the result is taken to ensure the true value.
     \end{itemize}
 \end{itemize}
 
@@ -438,23 +438,23 @@ def create_hybrid_img(img1, img2, r):
 
 \begin{itemize}
     
-    \item Thuật toán:
+    \item Algorithm:
     \begin{itemize}
-        \item Biến đổi Fourier: Thực hiện biến đổi Fourier cho hai hình ảnh đầu vào (img1 và img2) bằng cách sử dụng hàm fft2, biến đổi các hình ảnh từ miền không gian sang miền tần số.
-        \item Dịch các hệ số tần số: Các hệ số tần số của cả hai hình ảnh được dịch đến trung tâm bằng cách sử dụng fftshift
-        \item Tạo Mask: Một mask được tạo ra dựa trên bán kính được cung cấp r. Mask này là một mảng nhị phân trong đó các pixel trong bán kính được đặt thành 1, và các pixel ngoài bán kính được đặt thành 0. Nó xác định các tần số nào từ img1 sẽ chiếm ưu thế trong hình ảnh hybrid.
-        \item Kết hợp các tần số: Các thành phần tần số của cả hai hình ảnh được kết hợp bằng cách sử dụng mask được tạo ra ở trên, đảm bảo rằng hình ảnh hybrid sẽ có các tần số ưu thế từ img1 trong bán kính đã chỉ định, và các tần số từ img2 ở bên ngoài bán kính đó.
-        \item Dịch lại các hệ số tần số: Sau khi kết hợp các tần số, các hệ số tần số của hình ảnh hybrid kết quả được dịch trở lại vị trí ban đầu bằng cách sử dụng ifftshift
-        \item Biến đổi nghịch: Cuối cùng, biến đổi Fourier nghịch (ifft2) được áp dụng để thu được hình ảnh hybrid trong miền không gian. Giá trị tuyệt đối của biến đổi nghịch được lấy để đảm bảo giá trị thực của đầu ra.
+        \item Fourier transform: Performs a Fourier transform for two input images (img1 and img2) using the fft2 function, transforming the images from the spatial domain to the frequency domain.
+        \item Shift frequency coefficients: The frequency coefficients of both images are shifted to the center using fftshift.
+        \item Create Mask: A mask is created based on the provided radius r. This mask is a binary array where pixels within the radius are set to 1, and pixels outside the radius are set to 0. It determines which frequencies from img1 will dominate in the hybrid image.
+        \item Combine frequencies: The frequency components of both images are combined using the mask created above, ensuring that the hybrid image will have dominant frequencies from img1 within the specified radius specified, and the frequencies from img2 are outside that radius.
+        \item Re-shift frequency coefficients: After combining the frequencies, the frequency coefficients of the resulting hybrid image are shifted back to their original positions using ifftshift.
+        \item Inverse transform: Finally, inverse Fourier transform (ifft2) is applied to obtain hybrid images in the spatial domain. The absolute value of the inverse transform is taken to ensure the true value of the output.
     \end{itemize}
 \end{itemize}
 
 
 
 \subsection{Output}
-\subsubsection{Kết quả sau khi thực hiện filter\_frequency() function}
+\subsubsection{Result after executing filter\_frequency() function}
 \begin{itemize}
-    \item Ảnh thu được:
+    \item Photos obtained:
 \end{itemize}
 
 \begin{figure}[H]
@@ -465,9 +465,9 @@ def create_hybrid_img(img1, img2, r):
 \end{figure}
 
 
-\subsubsection{Kết quả sau khi thực hiện create\_hybrid\_img() function}
+\subsubsection{Result after executing create\_hybrid\_img() function}
 \begin{itemize}
-    \item Ảnh thu được:
+    \item Photos obtained:
 \end{itemize}
 
 \begin{figure}[H]
